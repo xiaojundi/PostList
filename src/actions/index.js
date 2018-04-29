@@ -19,3 +19,21 @@ export function creatPost(value, callBack){
 		payload: request
 	}
 }
+
+
+export function fetchPost(id){
+	const request = axios.get(`${URL_Link}/posts/${id}${API_KEY}`)
+	return{
+		type: "fetchPost",
+		payload: request
+	}
+}
+
+export function deletePost(id, callback){
+	const request = axios.delete(`${URL_Link}/posts/${id}${API_KEY}`)
+	.then(()=>{callback()})
+	return{
+		type: "deletePost",
+		payload: id
+	}
+}
